@@ -338,8 +338,10 @@ EXTRACURRICULARS
                   <div className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl"></div>
                 </div>
               </div>
+            </div>
+          ))}
 
-              <div className="mt-12 text-center">
+          <div className="mt-12 text-center">
             <p className="text-gray-500 mb-4">Interested in working together?</p>
             <button
               onClick={() => scrollToSection('contact')}
