@@ -39,41 +39,12 @@ export default function Portfolio() {
 
   const clientWork = [
     {
-      name: 'Fred Fadezzz Barbering',
-      description: 'A modern, professional booking platform designed for a local barber to manage appointments and showcase services. Features real-time availability, seamless booking flow, and responsive design for mobile and desktop users.',
+      name: 'Freddy\'s Booking App',
+      description: 'Modern booking platform designed for a local barber to manage appointments and showcase services.',
       tech: ['Next.js', 'TypeScript', 'SQLite', 'Vercel'],
       link: 'https://fredfadezzz.vercel.app',
-      highlights: [
-        'Built complete full-stack booking system with real-time availability',
-        'Designed intuitive UI/UX for seamless client experience',
-        'Implemented SQLite database for efficient appointment management',
-        'Deployed on Vercel with continuous integration'
-      ],
       image: '🪒'
     }
-  ];
-
-  const experience = [
-    {
-      role: 'Student IT Technician',
-      company: 'Southern Connecticut State University',
-      period: 'May 2023 - May 2024',
-      location: 'New Haven, CT',
-      responsibilities: [
-        'Troubleshot and activated network jacks and switch ports',
-        'Handled tickets in Blackboard SmartView for network issues',
-        'Managed network infrastructure and cable management',
-        'Performed networking repairs on UPS and APs'
-      ]
-    }
-  ];
-
-  const hobbies = [
-    { name: 'Biking', emoji: '🚴' },
-    { name: 'Working Out', emoji: '💪' },
-    { name: 'Gaming', emoji: '🎮' },
-    { name: 'Programming', emoji: '💻' },
-    { name: 'Basketball', emoji: '🏀' }
   ];
 
   const scrollToSection = (id: string) => {
@@ -215,13 +186,14 @@ EXTRACURRICULARS
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
-                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Steven Lee</span>
+                Steven Lee
               </h1>
               <p className="text-xl md:text-2xl text-gray-400 mb-6">
-                Full Stack Developer & Computer Science Graduate
+                Computer Science Graduate from <a href="https://www.southernct.edu" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 underline transition">SCSU</a>
               </p>
               <p className="text-lg text-gray-500 mb-8 max-w-2xl">
-                Building professional web applications for real clients. Recent CS graduate from Southern Connecticut State University.
+                
+                
               </p>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <button
@@ -270,11 +242,8 @@ EXTRACURRICULARS
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Work</span>
+              Client Work
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Real-world projects built for actual clients. Professional web solutions that drive business results.
-            </p>
           </div>
 
           {clientWork.map((work, idx) => (
@@ -294,15 +263,6 @@ EXTRACURRICULARS
                   </p>
 
                   <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Key Features</h4>
-                    <ul className="space-y-2">
-                      {work.highlights.map((highlight, hidx) => (
-                        <li key={hidx} className="text-gray-400 flex items-start gap-3">
-                          <span className="text-white mt-1">✓</span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
                   <div className="flex flex-wrap gap-3 mb-6">
@@ -353,125 +313,11 @@ EXTRACURRICULARS
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-            About <span className="text-gray-400">Me</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition">
-              <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <User className="text-gray-400" />
-                Background
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-4">
-                I'm a 22-year-old recent graduate from Southern Connecticut State University with a Bachelor's in Computer Science and a minor in Data Science. Graduating in May 2025, I've built a strong foundation in software development, cloud services, and AI technologies.
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                My experience ranges from network administration to full-stack development, and I'm passionate about creating efficient, user-friendly applications that solve real-world problems.
-              </p>
-            </div>
-
-            <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition">
-              <h3 className="text-2xl font-bold text-white mb-4">Hobbies & Interests</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {hobbies.map((hobby, idx) => (
-                  <div key={idx} className="bg-zinc-800 rounded-lg p-4 text-center hover:bg-zinc-700 transition">
-                    <div className="text-4xl mb-2">{hobby.emoji}</div>
-                    <div className="text-gray-300">{hobby.name}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-            Technical <span className="text-gray-400">Skills</span>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition">
-              <h3 className="text-xl font-bold text-white mb-4">Languages</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.languages.map((skill, idx) => (
-                  <span key={idx} className="px-4 py-2 bg-zinc-800 text-gray-300 rounded-lg text-sm border border-zinc-700">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition">
-              <h3 className="text-xl font-bold text-white mb-4">Databases</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.databases.map((skill, idx) => (
-                  <span key={idx} className="px-4 py-2 bg-zinc-800 text-gray-300 rounded-lg text-sm border border-zinc-700">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition">
-              <h3 className="text-xl font-bold text-white mb-4">Tools & Frameworks</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.tools.map((skill, idx) => (
-                  <span key={idx} className="px-4 py-2 bg-zinc-800 text-gray-300 rounded-lg text-sm border border-zinc-700">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-            Work <span className="text-gray-400">Experience</span>
-          </h2>
-
-          <div className="space-y-8">
-            {experience.map((exp, idx) => (
-              <div key={idx} className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
-                    <p className="text-gray-400 text-lg">{exp.company}</p>
-                  </div>
-                  <div className="text-gray-500 mt-2 md:mt-0">
-                    <p>{exp.period}</p>
-                    <p>{exp.location}</p>
-                  </div>
-                </div>
-                <ul className="space-y-2">
-                  {exp.responsibilities.map((resp, ridx) => (
-                    <li key={ridx} className="text-gray-400 flex items-start gap-2">
-                      <span className="text-gray-500 mt-1">•</span>
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-            Featured <span className="text-gray-400">Projects</span>
+            Projects
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -513,11 +359,8 @@ EXTRACURRICULARS
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let's <span className="text-gray-400">Connect</span>
+            Let's Connect
           </h2>
-          <p className="text-xl text-gray-400 mb-12">
-            I'm currently open to new opportunities and collaborations. Feel free to reach out!
-          </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <button onClick={handleCopyEmail} className="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition group relative">
