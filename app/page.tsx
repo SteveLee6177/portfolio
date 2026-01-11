@@ -1,16 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Download, Code, Briefcase, User, ExternalLink, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, Download, Code, ExternalLink, Menu, X } from 'lucide-react';
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
-
-  const skills = {
-    languages: ['Python', 'JavaScript', 'TypeScript', 'Java', 'SQL'],
-    databases: ['MySQL', 'MongoDB', 'SQLite'],
-    tools: ['Linux', 'Git', 'GitHub', 'Google Cloud Platform', 'Visual Studio Code', 'Jira', 'Node.js', 'React', 'Next.js', 'Vercel', 'AWS']
-  };
 
   const projects = [
     {
@@ -55,60 +49,26 @@ export default function Portfolio() {
     }
   };
 
-  const handleDownloadResume = () => {
-    const resumeContent = `Steven Lee
-splee6177@gmail.com • linkedin.com/in/steven-lee-782753283/ • github.com/stevenLeecode
+  const handleDownloadResumePDF = () => {
+    const link = document.createElement('a');
+    link.href = '/StevenLee_Resume_2026.pdf';
+    link.download = 'Steven_Lee_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-EDUCATION
-Southern Connecticut State University, New Haven CT                                    May 2025
-Bachelor of Science in Computer Science with a minor in Data Science
-Relevant Coursework: Data Structures and Algorithms, Data Visualization, Software Design and Development,
-System Administration, Artificial Intelligence, Cloud Services, Generative AI
+  const handleDownloadResumeDOCX = () => {
+    const link = document.createElement('a');
+    link.href = '/StevenLee_Resume_2026.docx';
+    link.download = 'Steven_Lee_Resume.docx';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-WORK EXPERIENCE
-Student IT Technician                                                                  May 2023 - May 2024
-Southern Connecticut State University, New Haven CT
-• Troubleshot and activated network jacks and switch ports for users using a fluke
-• Handled tickets in Blackboard SmartView to assist users with network issues
-• Set up small net gear ethernet switches
-• Cleaned up network closets and cable management
-• Transported network switches around the university and helped install them
-• Networking repairs on UPS's and APs around the university
-
-Colossal Kielbasa                                                                      May 2022 - August 2024
-Ansonia, CT
-• Cooked kielbasa and pierogies with attention to cleanliness and presentation
-• Provided customer service by taking and processing orders
-
-PROJECTS
-RageBuilt - Full Stack Website
-• Designed and implemented the complete backend using Node.js and MySQL
-• Structured the database schema to efficiently store user accounts, vehicle components, and build configurations
-• Collaborated with Figma for UI/UX planning to ensure user-friendly design and navigation
-
-Freshwater Aquarium Fish Tracking – Real-Time Object Detection System
-• Fine-tuned a YOLOv8 object detection model to detect and track individual fish with high accuracy
-• Captured and streamed live video feeds using a Raspberry Pi, processing frames locally for edge inference
-• Developed a REST API to serve the collected tracking data to frontend and external applications
-• Built an interactive dashboard using Streamlit, enabling users to visualize fish paths, heat maps, and activity patterns
-
-TECHNICAL SKILLS
-Programming Languages: Python, JavaScript, Java, SQL, TypeScript
-Databases: MySQL, MongoDB
-Developmental Tools: Linux, Git, GitHub, Google Cloud Platform, Visual Studio Code, Jira
-
-EXTRACURRICULARS
-• Participated in the Computer Science Club`;
-
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Steven_Lee_Resume.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
+  const handlePreviewResume = () => {
+    window.open('/StevenLee_Resume_2026.pdf', '_blank');
   };
 
   const handleCopyEmail = async () => {
@@ -143,16 +103,13 @@ EXTRACURRICULARS
       <nav className="fixed top-0 w-full bg-zinc-900/95 backdrop-blur-md z-50 border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold text-white">
+            <button onClick={() => scrollToSection('home')} className="text-2xl font-bold text-white hover:text-gray-300 transition hover:cursor-pointer">
               SL
-            </div>
+            </button>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-gray-400 hover:text-white transition">Home</button>
               <button onClick={() => scrollToSection('client-work')} className="text-gray-400 hover:text-white transition">Client Work</button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-white transition">About</button>
-              <button onClick={() => scrollToSection('experience')} className="text-gray-400 hover:text-white transition">Experience</button>
               <button onClick={() => scrollToSection('projects')} className="text-gray-400 hover:text-white transition">Projects</button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-white transition">Contact</button>
             </div>
@@ -169,10 +126,7 @@ EXTRACURRICULARS
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden pb-4 space-y-2">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left text-gray-400 hover:text-white py-2">Home</button>
               <button onClick={() => scrollToSection('client-work')} className="block w-full text-left text-gray-400 hover:text-white py-2">Client Work</button>
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left text-gray-400 hover:text-white py-2">About</button>
-              <button onClick={() => scrollToSection('experience')} className="block w-full text-left text-gray-400 hover:text-white py-2">Experience</button>
               <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-gray-400 hover:text-white py-2">Projects</button>
               <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-gray-400 hover:text-white py-2">Contact</button>
             </div>
@@ -181,9 +135,9 @@ EXTRACURRICULARS
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section id="home" className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
                 Steven Lee
@@ -195,35 +149,47 @@ EXTRACURRICULARS
                 
                 
               </p>
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                <div className="flex items-center px-4 py-2 bg-white text-black rounded-lg font-semibold text-sm">
+                  <Download size={16} className="mr-2" />
+                  <span>Download Resume</span>
+                  <div className="mx-2 text-gray-400">|</div>
+                  <button
+                    onClick={handleDownloadResumePDF}
+                    className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 transition text-xs font-semibold"
+                  >
+                    PDF
+                  </button>
+                  <div className="mx-1.5 text-gray-600">|</div>
+                  <button
+                    onClick={handleDownloadResumeDOCX}
+                    className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 transition text-xs font-semibold"
+                  >
+                    DOCX
+                  </button>
+                </div>
                 <button
-                  onClick={handleDownloadResume}
-                  className="px-8 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition flex items-center gap-2"
+                  onClick={handlePreviewResume}
+                  className="px-6 py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-black transition text-sm"
                 >
-                  <Download size={20} />
-                  Download Resume
-                </button>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-black transition"
-                >
-                  Contact Me
+                  Preview Resume
                 </button>
               </div>
-              <div className="flex gap-4 mt-8 justify-center md:justify-start">
-                <a href="https://github.com/stevenLeecode" target="_blank" rel="noopener noreferrer" className="p-3 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
-                  <Github className="text-white" size={24} />
+              <div className="flex gap-3 mt-6 justify-center md:justify-start">
+                <a href="https://github.com/stevenLeecode" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
+                  <Github className="text-white" size={20} />
                 </a>
-                <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="p-3 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
-                  <Linkedin className="text-white" size={24} />
+                <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
+                  <Linkedin className="text-white" size={20} />
                 </a>
-                <a href="mailto:splee6177@gmail.com" className="p-3 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
-                  <Mail className="text-white" size={24} />
+                <a href="mailto:splee6177@gmail.com" className="p-2 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
+                  <Mail className="text-white" size={20} />
                 </a>
+                
               </div>
             </div>
             <div className="flex-shrink-0">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-zinc-800 p-1 shadow-2xl">
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-zinc-800 p-1 shadow-2xl">
                 <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center overflow-hidden border-2 border-zinc-700">
                   <img
                     src="/pfp.jpg"
@@ -238,36 +204,36 @@ EXTRACURRICULARS
       </section>
 
       {/* Client Work Section - Featured */}
-      <section id="client-work" className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+      <section id="client-work" className="py-12 px-4 sm:px-6 lg:px-8 bg-zinc-950">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Client Work
             </h2>
           </div>
 
           {clientWork.map((work, idx) => (
-            <div key={idx} className="bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-3xl p-8 md:p-12 border border-zinc-800 hover:border-zinc-600 transition-all duration-300 shadow-2xl hover:shadow-white/5">
+            <div key={idx} className="bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-3xl p-6 md:p-10 border border-zinc-800 hover:border-zinc-600 transition-all duration-300 shadow-2xl hover:shadow-white/5">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="text-6xl">{work.image}</div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="text-4xl">{work.image}</div>
                     <div>
-                      <h3 className="text-3xl font-bold text-white mb-2">{work.name}</h3>
-                      <p className="text-gray-500 text-sm">Full-Stack Web Application</p>
+                      <h3 className="text-2xl font-bold text-white mb-1">{work.name}</h3>
+                      <p className="text-gray-500 text-xs">Full-Stack Web Application</p>
                     </div>
                   </div>
                   
-                  <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+                  <p className="text-gray-400 text-base mb-4 leading-relaxed">
                     {work.description}
                   </p>
 
                   <div className="mb-6">
                   </div>
 
-                  <div className="flex flex-wrap gap-3 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {work.tech.map((tech, tidx) => (
-                      <span key={tidx} className="px-4 py-2 bg-zinc-800 text-gray-300 rounded-lg text-sm border border-zinc-700 font-medium">
+                      <span key={tidx} className="px-3 py-1 bg-zinc-800 text-gray-300 rounded-lg text-xs border border-zinc-700 font-medium">
                         {tech}
                       </span>
                     ))}
@@ -277,7 +243,7 @@ EXTRACURRICULARS
                     href={work.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl text-sm"
                   >
                     <ExternalLink size={20} />
                     <span>Visit Live Site</span>
@@ -301,11 +267,11 @@ EXTRACURRICULARS
             </div>
           ))}
 
-          <div className="mt-12 text-center">
-            <p className="text-gray-500 mb-4">Interested in working together?</p>
+          <div className="mt-8 text-center">
+            <p className="text-gray-500 mb-3 text-sm">Interested in working together?</p>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-3 border-2 border-zinc-700 text-white rounded-xl font-semibold hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+              className="px-6 py-2 border-2 border-zinc-700 text-white rounded-xl font-semibold hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-sm"
             >
               Let's Build Something
             </button>
@@ -314,30 +280,30 @@ EXTRACURRICULARS
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-zinc-950">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
             Projects
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
-              <div key={idx} className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition group">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-gray-300 transition">{project.title}</h3>
-                  <Code className="text-gray-400" size={24} />
+              <div key={idx} className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 hover:border-zinc-700 transition group flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-xl font-bold text-white group-hover:text-gray-300 transition">{project.title}</h3>
+                  <Code className="text-gray-400" size={20} />
                 </div>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <p className="text-gray-400 mb-3 text-sm">{project.description}</p>
+                <div className="flex flex-wrap gap-1 mb-3">
                   {project.tech.map((tech, tidx) => (
-                    <span key={tidx} className="px-3 py-1 bg-zinc-800 text-gray-300 rounded-lg text-sm border border-zinc-700">
+                    <span key={tidx} className="px-2 py-1 bg-zinc-800 text-gray-300 rounded-lg text-xs border border-zinc-700">
                       {tech}
                     </span>
                   ))}
                 </div>
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-1 mb-4 flex-1">
                   {project.highlights.map((highlight, hidx) => (
-                    <li key={hidx} className="text-gray-500 text-sm flex items-start gap-2">
+                    <li key={hidx} className="text-gray-500 text-xs flex items-start gap-2">
                       <span className="text-gray-600 mt-1">→</span>
                       <span>{highlight}</span>
                     </li>
@@ -345,7 +311,7 @@ EXTRACURRICULARS
                 </ul>
                 <div className="flex gap-4">
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition">
-                    <Github size={16} />
+                    <Github size={14} />
                     <span>Code</span>
                   </a>
                 </div>
@@ -356,17 +322,17 @@ EXTRACURRICULARS
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Let's Connect
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <button onClick={handleCopyEmail} className="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition group relative">
-              <Mail className="text-gray-400 mx-auto mb-4 group-hover:scale-110 transition" size={32} />
-              <h3 className="text-white font-semibold mb-2">Email</h3>
-              <p className="text-gray-500 text-sm">splee6177@gmail.com</p>
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <button onClick={handleCopyEmail} className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 hover:border-zinc-700 transition group relative">
+              <Mail className="text-gray-400 mx-auto mb-2 group-hover:scale-110 transition" size={24} />
+              <h3 className="text-white font-semibold mb-1 text-sm">Email</h3>
+              <p className="text-gray-500 text-xs">splee6177@gmail.com</p>
               {emailCopied && (
                 <div className="absolute top-4 right-4 bg-white text-black px-3 py-1 rounded-lg text-sm font-semibold shadow-lg">
                   Copied!
@@ -374,26 +340,26 @@ EXTRACURRICULARS
               )}
             </button>
 
-            <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition group">
-              <Linkedin className="text-gray-400 mx-auto mb-4 group-hover:scale-110 transition" size={32} />
-              <h3 className="text-white font-semibold mb-2">LinkedIn</h3>
-              <p className="text-gray-500 text-sm">Connect with me</p>
+            <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 hover:border-zinc-700 transition group">
+              <Linkedin className="text-gray-400 mx-auto mb-2 group-hover:scale-110 transition" size={24} />
+              <h3 className="text-white font-semibold mb-1 text-sm">LinkedIn</h3>
+              <p className="text-gray-500 text-xs">Connect with me</p>
             </a>
 
-            <a href="https://github.com/stevenLeecode" target="_blank" rel="noopener noreferrer" className="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition group">
-              <Github className="text-gray-400 mx-auto mb-4 group-hover:scale-110 transition" size={32} />
-              <h3 className="text-white font-semibold mb-2">GitHub</h3>
-              <p className="text-gray-500 text-sm">Check out my code</p>
+            <a href="https://github.com/stevenLeecode" target="_blank" rel="noopener noreferrer" className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 hover:border-zinc-700 transition group">
+              <Github className="text-gray-400 mx-auto mb-2 group-hover:scale-110 transition" size={24} />
+              <h3 className="text-white font-semibold mb-1 text-sm">GitHub</h3>
+              <p className="text-gray-500 text-xs">Check out my code</p>
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-zinc-800 bg-zinc-950">
+      <footer className="py-6 px-4 border-t border-zinc-800 bg-zinc-950">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-500">
-            © 2025 Steven Lee. Built with Next.js & TypeScript. Hosted on AWS.
+          <p className="text-gray-500 text-sm">
+            © 2025 Steven Lee. Built with Next.js & TypeScript. Hosted with AWS.
           </p>
         </div>
       </footer>
