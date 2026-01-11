@@ -109,9 +109,8 @@ export default function Portfolio() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('client-work')} className="text-gray-400 hover:text-white transition">Client Work</button>
-              <button onClick={() => scrollToSection('projects')} className="text-gray-400 hover:text-white transition">Projects</button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-white transition">Contact</button>
+              <button onClick={() => scrollToSection('client-work')} className="text-gray-400 hover:text-white transition hover:cursor-pointer">Client Work</button>
+              <button onClick={() => scrollToSection('projects')} className="text-gray-400 hover:text-white transition hover:cursor-pointer">Projects</button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -128,7 +127,6 @@ export default function Portfolio() {
             <div className="md:hidden pb-4 space-y-2">
               <button onClick={() => scrollToSection('client-work')} className="block w-full text-left text-gray-400 hover:text-white py-2">Client Work</button>
               <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-gray-400 hover:text-white py-2">Projects</button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-gray-400 hover:text-white py-2">Contact</button>
             </div>
           )}
         </div>
@@ -153,40 +151,44 @@ export default function Portfolio() {
                 <div className="flex items-center px-4 py-2 bg-white text-black rounded-lg font-semibold text-sm">
                   <Download size={16} className="mr-2" />
                   <span>Download Resume</span>
-                  <div className="mx-2 text-gray-400">|</div>
+                  <div className="mx-2 text-gray-600"></div>
                   <button
                     onClick={handleDownloadResumePDF}
-                    className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 transition text-xs font-semibold"
+                    className="hover: cursor-pointer px-3 py-1 bg-black text-white rounded hover:bg-gray-700 transition text-xs font-semibold"
                   >
                     PDF
                   </button>
-                  <div className="mx-1.5 text-gray-600">|</div>
+                  <div className="mx-1.5 text-gray-600"></div>
                   <button
                     onClick={handleDownloadResumeDOCX}
-                    className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 transition text-xs font-semibold"
+                    className="hover: cursor-pointer px-3 py-1 bg-black text-white rounded hover:bg-gray-700 transition text-xs font-semibold"
                   >
                     DOCX
                   </button>
                 </div>
                 <button
                   onClick={handlePreviewResume}
-                  className="px-6 py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-black transition text-sm"
+                  className="px-6 py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-black transition text-sm hover:cursor-pointer"
                 >
                   Preview Resume
                 </button>
               </div>
-              <div className="flex gap-3 mt-6 justify-center md:justify-start">
-                <a href="https://github.com/stevenLeecode" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
-                  <Github className="text-white" size={20} />
+              <div className="flex gap-6 mt-6 justify-center md:justify-start">
+                <a href="https://github.com/SteveLee6177" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 p-3 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition w-24">
+                  <Github className="text-white" size={32} />
+                  <span className="text-xs text-gray-400 text-center">GitHub</span>
                 </a>
-                <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
-                  <Linkedin className="text-white" size={20} />
+                <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 p-3 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition w-24">
+                  <Linkedin className="text-white" size={32} />
+                  <span className="text-xs text-gray-400 text-center">LinkedIn</span>
                 </a>
-                <a href="mailto:splee6177@gmail.com" className="p-2 bg-zinc-900 rounded-lg hover:bg-zinc-800 transition">
-                  <Mail className="text-white" size={20} />
-                </a>
-                
               </div>
+              <button
+                onClick={handleCopyEmail}
+                className="mt-6 px-4 py-2 bg-zinc-900 border border-zinc-800 text-gray-300 rounded-lg hover:bg-zinc-800 hover:border-zinc-600 transition text-sm"
+              >
+                {emailCopied ? '✓ Copied!' : 'splee6177@gmail.com'}
+              </button>
             </div>
             <div className="flex-shrink-0">
               <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-zinc-800 p-1 shadow-2xl">
@@ -266,16 +268,6 @@ export default function Portfolio() {
               </div>
             </div>
           ))}
-
-          <div className="mt-8 text-center">
-            <p className="text-gray-500 mb-3 text-sm">Interested in working together?</p>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="px-6 py-2 border-2 border-zinc-700 text-white rounded-xl font-semibold hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-sm"
-            >
-              Let's Build Something
-            </button>
-          </div>
         </div>
       </section>
 
@@ -310,7 +302,7 @@ export default function Portfolio() {
                   ))}
                 </ul>
                 <div className="flex gap-4">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-3 py-1 border border-white text-gray-400 hover:text-white transition rounded">
                     <Github size={14} />
                     <span>Code</span>
                   </a>
@@ -321,45 +313,11 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let's Connect
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
-            <button onClick={handleCopyEmail} className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 hover:border-zinc-700 transition group relative">
-              <Mail className="text-gray-400 mx-auto mb-2 group-hover:scale-110 transition" size={24} />
-              <h3 className="text-white font-semibold mb-1 text-sm">Email</h3>
-              <p className="text-gray-500 text-xs">splee6177@gmail.com</p>
-              {emailCopied && (
-                <div className="absolute top-4 right-4 bg-white text-black px-3 py-1 rounded-lg text-sm font-semibold shadow-lg">
-                  Copied!
-                </div>
-              )}
-            </button>
-
-            <a href="https://linkedin.com/in/steven-lee-782753283/" target="_blank" rel="noopener noreferrer" className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 hover:border-zinc-700 transition group">
-              <Linkedin className="text-gray-400 mx-auto mb-2 group-hover:scale-110 transition" size={24} />
-              <h3 className="text-white font-semibold mb-1 text-sm">LinkedIn</h3>
-              <p className="text-gray-500 text-xs">Connect with me</p>
-            </a>
-
-            <a href="https://github.com/stevenLeecode" target="_blank" rel="noopener noreferrer" className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 hover:border-zinc-700 transition group">
-              <Github className="text-gray-400 mx-auto mb-2 group-hover:scale-110 transition" size={24} />
-              <h3 className="text-white font-semibold mb-1 text-sm">GitHub</h3>
-              <p className="text-gray-500 text-xs">Check out my code</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-6 px-4 border-t border-zinc-800 bg-zinc-950">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-500 text-sm">
-            © 2025 Steven Lee. Built with Next.js & TypeScript. Hosted with AWS.
+            © 2025 Steven Lee. Built with Next.js. Hosted on AWS.
           </p>
         </div>
       </footer>
