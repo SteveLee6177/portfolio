@@ -324,21 +324,22 @@ EXTRACURRICULARS
                   </a>
                 </div>
 
-		<div className="relative">
-			<div className="aspect-video bg-zinc-800 rounded-2xl border-2 border-zinc-700 overflow-hidden shadow-2xl hover:border-zinc-600 transition-all duration-300">
-			    <iframe
-			      src="https://fredfadezzz.vercel.app" // or whatever your live URL is
-			      className="w-full h-full"
-			      title={`FredFadez Booking Platform`}
-			      sandbox="allow-scripts allow-same-origin"
-			      loading="lazy"
-			    />
-			</div>
-			<div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl"></div>
-			<div className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl"></div>
-		</div>
+                <div className="relative">
+                  <div className="aspect-video bg-zinc-800 rounded-2xl border-2 border-zinc-700 overflow-hidden shadow-2xl hover:border-zinc-600 transition-all duration-300">
+                    <iframe
+                      src="https://fredfadezzz.vercel.app"
+                      className="w-full h-full"
+                      title={`FredFadez Booking Platform`}
+                      sandbox="allow-scripts allow-same-origin"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-2xl"></div>
+                  <div className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl"></div>
+                </div>
+              </div>
 
-          <div className="mt-12 text-center">
+              <div className="mt-12 text-center">
             <p className="text-gray-500 mb-4">Interested in working together?</p>
             <button
               onClick={() => scrollToSection('contact')}
